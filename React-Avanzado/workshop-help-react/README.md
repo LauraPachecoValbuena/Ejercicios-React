@@ -1,0 +1,1 @@
+This project serves as source of a workshop to confirm some advanced ideas about React updates
