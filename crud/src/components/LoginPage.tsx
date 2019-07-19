@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import jwt from "jsonwebtoken";
 import { IMyUser } from "../reducers/myUserReducer";
 
-
 interface IProps {
   saveToken: (token: string) => void;
   saveMyUser: (myUser: IMyUser) => void;
@@ -35,9 +34,8 @@ const Login: React.FC<IProps> = props => {
     }).then(res => {
       if (res.ok) {
         res.text().then(token => {
-            localStorage.setItem("token", token);
+          localStorage.setItem("token", token);
           props.saveToken(token); //aqui estoy llamando al saveToken de la interfaz IProps.
-          
 
           const decode = jwt.decode(token); //ésta es mi variable donde guardo el token descodificado.
           //el tipo de decode puede ser un string, null o un objeto.

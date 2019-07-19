@@ -5,11 +5,16 @@ import { IMyUser } from "../reducers/myUserReducer";
 import { connect } from "react-redux";
 
 interface IPropsGlobal {
-    myUser: IMyUser;
-    saveToken: (token: string) => void;
+  myUser: IMyUser;
+  saveToken: (token: string) => void;
 }
 
 const Navbar: React.FC<IPropsGlobal> = props => {
+  const logOut = () => {
+    props.saveToken("");
+    localStorage.removeItem("token");
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-secondary">
@@ -18,7 +23,7 @@ const Navbar: React.FC<IPropsGlobal> = props => {
           <button
             className="btn btn-outline-info my-2 my-sm-0"
             type="submit"
-            onClick={() => props.saveToken("")}
+            onClick={logOut}
           >
             Logout
           </button>
@@ -29,14 +34,14 @@ const Navbar: React.FC<IPropsGlobal> = props => {
 };
 
 const mapStateToProps = (state: IGlobalState) => ({
-    myUser: state.myUser
+  myUser: state.myUser
 });
 
 const mapDispatchToProps = {
-    saveToken: actions.saveToken
+  saveToken: actions.saveToken
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Navbar);
