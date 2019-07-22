@@ -16,4 +16,9 @@ type TSetUsersAction = {
   users: IUser[];
 };
 
-export type TAction = TSaveTokenAction | TSaveMyUserAction | TSetUsersAction;
+type TRemoveUserAction = {
+  type: "REMOVE_USER";
+  user_id: string;
+};
+
+export type TAction = TSaveTokenAction | TSaveMyUserAction | TSetUsersAction | TRemoveUserAction;
