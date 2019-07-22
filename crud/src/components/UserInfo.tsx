@@ -15,7 +15,9 @@ const UserInfo: React.FC<
   if (!user) {
     return <Redirect to="/" />;
   }
-  return <div>{user.username}</div>;
+  return <div>
+  {user.username}
+  </div>;
 };
 
 const mapStateToProps = (state: IGlobalState) => ({
