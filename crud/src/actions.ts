@@ -23,6 +23,12 @@ export const removeUser: ActionCreator<TAction> = (user_id: string) => ({
   user_id
 });
 
+export const editUser: ActionCreator<TAction> = (user_id: string, user:IUser) => ({
+  type: "EDIT_USER",
+  user_id,
+  user
+});
+
 export const addNewUser: ActionCreator<TAction> = (user: IUser) => ({
   type: "ADD_NEW_USER",
   user

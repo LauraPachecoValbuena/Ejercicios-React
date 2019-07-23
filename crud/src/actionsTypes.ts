@@ -21,6 +21,12 @@ type TRemoveUserAction = {
   user_id: string;
 };
 
+type TEditUserAction = {
+  type: "EDIT_USER";
+  user_id: string;
+  user: IUser;
+};
+
 type TAddNewUserAction = {
   type: "ADD_NEW_USER";
   user: IUser;
@@ -31,4 +37,5 @@ export type TAction =
   | TSaveMyUserAction
   | TSetUsersAction
   | TRemoveUserAction
+  | TEditUserAction
   | TAddNewUserAction;
