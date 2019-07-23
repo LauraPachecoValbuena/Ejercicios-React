@@ -32,17 +32,8 @@ const UserInfo: React.FC<
        }
     }).then(response => {
       if (response.ok) {
-        fetch("http://localhost:3000/api/users", {
-          headers: {
-            "Content-type": "application/json",
-            Authorization: "Bearer " + props.token
-          }
-        }).then(response => {
-          if (response.ok) {
-            props.removeUser(user_id);
-            props.history.push("/users");
-          }
-        })
+        props.removeUser(user_id);
+        props.history.push("/users");
       }
  
     });
@@ -86,3 +77,6 @@ export default connect(
   mapStateToProps,
   mapDitpatchToProps
   )(UserInfo);
+
+
+
