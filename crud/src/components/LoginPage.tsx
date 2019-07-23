@@ -68,6 +68,7 @@ const Login: React.FC<IProps> = props => {
             <br />
             <h4>Contraseña</h4>
             <input
+              data-testid="password_input"
               type="password"
               id="password"
               placeholder=""

@@ -29,7 +29,7 @@ const EditUser: React.FC<IPropsGlobal & RouteComponentProps<{ user_id: string}>>
     };
 
     const updateIsAdmin = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setIsAdmin(s => !s);
+        setIsAdmin(event.currentTarget.checked);
     };
 
     const user = React.useMemo(() => props.users.find(u => u._id === props.match.params.user_id), [props.match.params.user_id]);
@@ -46,7 +46,9 @@ const EditUser: React.FC<IPropsGlobal & RouteComponentProps<{ user_id: string}>>
         return null;
     }
 
-    const edit = () => {
+    const Edit = (user_id: string) => {
+        const id = user_id;
+        fetch()
         
     }
 

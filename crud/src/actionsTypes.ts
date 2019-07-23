@@ -21,4 +21,14 @@ type TRemoveUserAction = {
   user_id: string;
 };
 
-export type TAction = TSaveTokenAction | TSaveMyUserAction | TSetUsersAction | TRemoveUserAction;
+type TAddNewUserAction = {
+  type: "ADD_NEW_USER";
+  user: IUser;
+};
+
+export type TAction =
+  | TSaveTokenAction
+  | TSaveMyUserAction
+  | TSetUsersAction
+  | TRemoveUserAction
+  | TAddNewUserAction;

@@ -21,4 +21,9 @@ export const setUsers: ActionCreator<TAction> = (users: IUser[]) => ({
 export const removeUser: ActionCreator<TAction> = (user_id: string) => ({
   type: "REMOVE_USER",
   user_id
-}); 
+});
+
+export const addNewUser: ActionCreator<TAction> = (user: IUser) => ({
+  type: "ADD_NEW_USER",
+  user
+});
