@@ -3,6 +3,8 @@ import * as actions from "../actions";
 import { IGlobalState } from "../reducers/reducers";
 import { IMyUser } from "../reducers/myUserReducer";
 import { connect } from "react-redux";
+import AddUser from "./AddUser";
+import { Link } from "react-router-dom";
 
 interface IPropsGlobal {
   myUser: IMyUser;
@@ -27,6 +29,14 @@ const Navbar: React.FC<IPropsGlobal> = props => {
           >
             Logout
           </button>
+          {props.myUser.isAdmin && (
+          <Link
+          to="/users/add"
+            className="btn btn-info"
+          >
+            Add New User
+          </Link>
+          )}
         </form>
       </nav>
     </div>

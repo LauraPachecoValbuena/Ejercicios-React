@@ -74,7 +74,6 @@ const AddUser: React.FC<IPropsGlobal & RouteComponentProps<{  }>> = props => {
 							id="username"
 							placeholder=""
 							className="form-control"
-							value={username}
 							onChange={updateUsername}
 						/>
 						<br />
@@ -85,7 +84,6 @@ const AddUser: React.FC<IPropsGlobal & RouteComponentProps<{  }>> = props => {
 							id="password"
 							placeholder=""
 							className="form-control"
-							value={password}
 							onChange={updatePassword}
 						/>
 						<br />
@@ -95,7 +93,6 @@ const AddUser: React.FC<IPropsGlobal & RouteComponentProps<{  }>> = props => {
 							id="email"
 							placeholder=""
 							className="form-control"
-							value={email}
 							onChange={updateEmail}
 						/>
 						<br />
@@ -105,7 +102,6 @@ const AddUser: React.FC<IPropsGlobal & RouteComponentProps<{  }>> = props => {
 								<input
 									type="checkbox"
 									className="form-control"
-									checked={isAdmin}
 									onChange={updateIsAdmin}
 								/>
 								<br />
@@ -123,7 +119,8 @@ const AddUser: React.FC<IPropsGlobal & RouteComponentProps<{  }>> = props => {
 
 const mapStateToProps = (state: IGlobalState) => ({
     users: state.users,
-    token: state.token
+	token: state.token,
+	myUser: state.myUser
 });
 
 const mapDitpatchToProps = {

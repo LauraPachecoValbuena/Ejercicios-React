@@ -2,7 +2,9 @@ import React from "react";
 import Navbar from "./Navbar";
 import ShowUsers from "./ShowUsers";
 import UserInfo from "./UserInfo";
-import { Route } from "react-router";
+import { Route, Switch } from "react-router";
+import EditUser from "./EditUser";
+import AddUser from "./AddUser";
 
 const LayoutPage: React.FC = () => {
   return (
@@ -14,7 +16,11 @@ const LayoutPage: React.FC = () => {
             <ShowUsers />
           </div>
           <div className="col-5">
-            <Route path="/users/:user_id" component={UserInfo} />
+            <Switch>
+            <Route path="/users/add" exact component={AddUser} />
+            <Route path="/users/:user_id" exact component={UserInfo} />
+            <Route path="/users/edit/:user_id" exact component={EditUser} />
+            </Switch>
           </div>
         </div>
       </div>

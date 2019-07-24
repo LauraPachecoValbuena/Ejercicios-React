@@ -12,6 +12,7 @@ interface IPropsGlobal {
   token: string;
   myUser: IMyUser;
   removeUser: (user_id: string) => void;
+  editUser: (user_id: string, user: IUser) => void;
 }
 
 const UserInfo: React.FC<
@@ -26,39 +27,40 @@ const UserInfo: React.FC<
     const id = user_id;
     fetch("http://localhost:3000/api/users/" + user._id, {
       method: "DELETE",
-       headers: {
-         "Content-type": "application/json",
-         Authorization: "Bearer " + props.token
-       }
+      headers: {
+        "Content-type": "application/json",
+        Authorization: "Bearer " + props.token
+      }
     }).then(response => {
       if (response.ok) {
         props.removeUser(user_id);
         props.history.push("/users");
       }
- 
     });
   };
-  
+
   return (
     <>
-        <div className="card" style={{ width: "18rem" }}>
-          <div key={user._id} className="card-body">
-            <h5 className="card-title">{user.username}</h5>
-            <h6 className="card-subtitle mb-2 text-muted">{user.email}</h6>
-            <p className="card-text">({user.isAdmin})</p>
-            <a href="#" className="card-link">
-              {/* <Link to={"/users/" + u._id} className="btn btn-info">
-              Let's Go
-            </Link> */}
-              Edit
-            </a>
-            {props.myUser.isAdmin && (
-            <Link to={"/users/" + user._id} className="btn btn-info" onClick={() => Delete (user._id)} >
+      <div className="card" style={{ width: "18rem" }}>
+        <div key={user._id} className="card-body">
+          <h5 className="card-title">{user.username}</h5>
+          <h6 className="card-subtitle mb-2 text-muted">{user.email}</h6>
+          <p className="card-text">({user.isAdmin})</p>
+          <Link to={"/users/edit/" + user._id} className="btn btn-info">
+            Edit
+          </Link>
+
+          {props.myUser.isAdmin && (
+            <Link
+              to={"/users/" + user._id}
+              className="btn btn-info"
+              onClick={() => Delete(user._id)}
+            >
               Delete
             </Link>
-            )}
-          </div>
+          )}
         </div>
+      </div>
     </>
   );
 };
@@ -76,7 +78,4 @@ const mapDitpatchToProps = {
 export default connect(
   mapStateToProps,
   mapDitpatchToProps
-  )(UserInfo);
-
-
-
+)(UserInfo);
